@@ -2,6 +2,8 @@ package ru.mirraim.tacos.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -11,10 +13,19 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The @Table annotation is completely optional. By default the object is mapped to a table based
+ * on the domain class name. In this case, TacoOrder is mapped to a table named "Taco_Order". If
+ * that’s fine for you, then you can leave the @Table annotation off completely or use it without
+ * parameters. But if you’d prefer to map it to a different table name, then you can specify the table
+ * name as a parameter to @Table
+ */
 @Data
+@Table
 public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Id
     private Long id;
     private Timestamp placedAt;
 

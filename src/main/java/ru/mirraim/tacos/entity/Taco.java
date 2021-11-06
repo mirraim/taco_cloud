@@ -1,6 +1,8 @@
 package ru.mirraim.tacos.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,8 +11,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@Table
 public class Taco {
-
+    @Id
     private Long id;
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
